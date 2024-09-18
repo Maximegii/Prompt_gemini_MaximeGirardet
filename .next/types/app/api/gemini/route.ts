@@ -1,8 +1,8 @@
 // File: C:\Users\maxime.girardet\Documents\Cours ISITECH\Prompt enginering\Prompt_Gemini\gemini-prompt\app\api\gemini\route.js
-import * as entry from '../../../../../app/api/gemini/route.js'
+import * as entry from '../../../../../src/app/api/gemini/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../app/api/gemini/route.js')
+type TEntry = typeof import('../../../../../src/app/api/gemini/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
