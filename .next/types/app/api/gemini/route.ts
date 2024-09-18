@@ -1,4 +1,4 @@
-// File: C:\Users\maxime.girardet\Documents\Cours ISITECH\Prompt enginering\Prompt_Gemini\gemini-prompt\app\api\gemini\route.js
+// File: C:\Users\maxime.girardet\Documents\Cours ISITECH\Prompt enginering\Prompt_Gemini\gemini-prompt\src\app\api\gemini\route.js
 import * as entry from '../../../../../src/app/api/gemini/route.js'
 import type { NextRequest } from 'next/server.js'
 

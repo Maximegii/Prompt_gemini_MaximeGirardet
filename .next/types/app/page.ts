@@ -1,4 +1,4 @@
-// File: C:\Users\maxime.girardet\Documents\Cours ISITECH\Prompt enginering\Prompt_Gemini\gemini-prompt\app\page.js
+// File: C:\Users\maxime.girardet\Documents\Cours ISITECH\Prompt enginering\Prompt_Gemini\gemini-prompt\src\app\page.js
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
