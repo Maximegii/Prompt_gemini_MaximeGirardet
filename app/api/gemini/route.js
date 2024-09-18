@@ -6,11 +6,13 @@ export async function POST(request) {
     const { message } = await request.json();
     console.log("Message de l'utilisateur :", message);
 
+    const messageControl = "Attention, répond uniquement question concernant les voitures, sinon répondre désolé, je suis conçu pour vous répondre uniquement aux questions auto:"+message
+
     const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API_KEY);
 
     const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"});
 
-    const result = await model.generateContent(message);
+    const result = await model.generateContent(messageControl);
 
     //console.log("Réponse de l'API :", JSON.stringify(result, null, 2));
     const reponse = JSON.stringify(result, null,2);
