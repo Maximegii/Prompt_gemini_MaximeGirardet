@@ -1,17 +1,39 @@
-import "dotenv/config"
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import fs from "fs";
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-//console.log("process.env.GOOGLE_API_KEY", process.env.GOOGLE_API_KEY);
+import { NextResponse } from "next/server";
 
-async function run() {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+export async function POST(request) {
+  try {
+    const { message } = await request.json();
+    console.log("Message de l'utilisateur :", message);
 
-    const prompt = "que mange on ce soir ?"
+    const messageControl = "Attention, répond uniquement aux question concernant les voitures (marque, prix, caractéristique etc...), sinon répondre je suis conçu pour répondre à vos questions automobile uniquement (sauf message de bonjour biensur). Voici le message de l'utilisateur :"+message
 
-    const result = await model.generateContent(prompt);
+    const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API_KEY);
 
-    console.log("voici le resultat", result.response.text());
+    const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"});
 
+    const result = await model.generateContent(messageControl);
+
+    //console.log("Réponse de l'API :", JSON.stringify(result, null, 2));
+    const reponse = JSON.stringify(result, null,2);
+    // console.log("response", reponse)
+
+    const candidates = result?.response?.candidates;
+
+    if (!candidates || candidates.length === 0) {
+      throw new Error("Aucun candidat trouvé dans la réponse de l'IA");
+    }
+    // console.log("candidates", candidates)
+
+    // Extraire la réponse du premier candidat
+    const aiResponse = candidates[0].content.parts;
+    // console.log("reponseapi : ",aiResponse)
+    return NextResponse.json({ response: aiResponse });
+  } catch (error) {
+    console.error("Erreur lors de la génération de contenu :", error);
+    return NextResponse.json(
+      { error: "Erreur lors de la génération de contenu" },
+      { status: 500 }
+    );
+  }
 }
-run();
