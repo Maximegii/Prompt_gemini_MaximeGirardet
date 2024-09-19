@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Gemini Chat</h1>
+      <h1 style={styles.title} > 🚗 Gemini Car 🚗</h1>
       <div style={styles.phone}>
         <div style={styles.screen}>
           <div id="chatbox" style={styles.chatbox}>
