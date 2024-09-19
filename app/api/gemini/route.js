@@ -6,7 +6,7 @@ export async function POST(request) {
     const { message } = await request.json();
     console.log("Message de l'utilisateur :", message);
 
-    const messageControl = "Attention, répond uniquement aux question concernant les voitures (marque, prix, caractéristique etc...), sinon répondre je suis conçu pour répondre à vos questions automobile (sauf message de bonjour biensur). Voici le message de l'utilisateur :"+message
+    const messageControl = "Attention, répond uniquement aux question concernant les voitures (marque, prix, caractéristique etc...), sinon répondre je suis conçu pour répondre à vos questions automobile (Bien entendu si l'utilisateur te dit bonjour, répond lui poliment). Voici le message de l'utilisateur :"+message
 
     const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API_KEY);
 
