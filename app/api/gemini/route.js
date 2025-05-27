@@ -14,17 +14,15 @@ export async function POST(request) {
 
     const result = await model.generateContent(messageControl);
 
-    //console.log("Réponse de l'API :", JSON.stringify(result, null, 2));
+    console.log("Réponse de l'API :", JSON.stringify(result, null, 2));
     const reponse = JSON.stringify(result, null,2);
     // console.log("response", reponse)
-
     const candidates = result?.response?.candidates;
 
     if (!candidates || candidates.length === 0) {
       throw new Error("Aucun candidat trouvé dans la réponse de l'IA");
     }
     // console.log("candidates", candidates)
-
     // Extraire la réponse du premier candidat
     const aiResponse = candidates[0].content.parts;
     // console.log("reponseapi : ",aiResponse)
@@ -32,7 +30,7 @@ export async function POST(request) {
   } catch (error) {
     console.error("Erreur lors de la génération de contenu :", error);
     return NextResponse.json(
-      { error: "Erreur lors de la génération de contenu" },
+      { error: "Erreur lors de la génération de contenu, gemini n'est peut etre pas disponible ?" },
       { status: 500 }
     );
   }

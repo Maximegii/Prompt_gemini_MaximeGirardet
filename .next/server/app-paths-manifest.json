@@ -1,5 +1,4 @@
 {
   "/page": "app/page.js",
-  "/api/gemini/route": "app/api/gemini/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/api/gemini/route": "app/api/gemini/route.js"
 }
